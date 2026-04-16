@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BabyTracker</title>
+    <link href="styles/index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<h1>BabyTracker</h1>
+<form id="activity-form">
+  <label for="dag">Dag:</label>
+  <input type="text" id="dag" required>
+
+  <label for="activiteit">Activiteit:</label>
+  <input type="text" id="activiteit" required>
+
+  <label for="start">Start:</label>
+  <input type="time" id="start" required>
+
+  <label for="eind">Einde:</label>
+  <input type="time" id="eind" required>
+
+  <label for="categorie">Categorie:</label>
+  <select id="categorie">
+    <option value="slaap">Slaap</option>
+    <option value="voeding">Voeding</option>
+    <option value="andere">Andere</option>
+  </select>
+
+  <button type="submit">Toevoegen</button>
+
+</form>
+
+<hr>
+
+<h2>Overzicht</h2>
+<ul id="lijst"></ul>
+
+<script src="js/app.js"></script>
+</body>
+</html>
