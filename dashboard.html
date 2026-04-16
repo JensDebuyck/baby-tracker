@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BabyTracker Dashboard</title>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+
+<h1>Dashboard 📊</h1>
+
+<button onclick="window.location.href='index.html'">
+    ← Terug naar tracker
+</button>
+
+<hr>
+
+<div id="stats">
+    <h2>Overzicht</h2>
+
+    <p id="sleepTotal">Slaap: ...</p>
+    <p id="feedTotal">Voeding: ...</p>
+    <p id="otherTotal">Andere: ...</p>
+</div>
+
+<h2>Verdeling per categorie</h2>
+
+<div class="chart-container">
+    <canvas id="categoryChart"></canvas>
+</div>
+<hr>
+
+<table>
+    <thead>
+    <tr>
+        <th>Dag</th>
+        <th>Categorie</th>
+        <th>Activiteit</th>
+        <th>Duur</th>
+    </tr>
+    </thead>
+    <tbody id="dashTable"></tbody>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="js/dashboard.js"></script>
+
+</body>
+</html>

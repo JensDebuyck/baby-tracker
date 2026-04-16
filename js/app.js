@@ -46,14 +46,16 @@ onAuthStateChanged(auth, async (user) => {
     currentUser = user;
 
     if (user) {
-        authSection.style.display = "none";
+        document.getElementById("authSection").style.display = user ? "none" : "block";
+        document.getElementById("userBar").style.display = user ? "flex" : "none";
         appSection.style.display = "block";
 
         userInfo.textContent = `Ingelogd als: ${user.displayName}`;
 
         await loadData();
     } else {
-        authSection.style.display = "block";
+        document.getElementById("authSection").style.display = user ? "none" : "block";
+        document.getElementById("userBar").style.display = user ? "flex" : "none";
         appSection.style.display = "none";
     }
 });
@@ -82,7 +84,7 @@ form.addEventListener("submit", async (e) => {
         eind: document.getElementById("eind").value,
         categorie: document.getElementById("categorie").value,
 
-        userId: currentUser.uid,
+        groupId: "baby-family",
 
         createdAt: serverTimestamp()
     };
@@ -102,7 +104,7 @@ async function loadData() {
 
     const q = query(
         collection(db, "activities"),
-        where("userId", "==", currentUser.uid)
+        where("groupId", "==", "baby-family")
     );
 
     const snapshot = await getDocs(q);
@@ -160,3 +162,4 @@ document.getElementById("activiteit").addEventListener("change", (e) => {
     document.getElementById("categorie").value =
         activityCategoryMap[activiteit] || "andere";
 });
+

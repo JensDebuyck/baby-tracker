@@ -6,17 +6,31 @@
     <link href="styles/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1>BabyTracker</h1>
+<header class="topbar">
 
+  <div class="logo">
+    BabyTracker
+  </div>
 
-<div id="authSection">
-  <button id="googleLogin">Login met Google</button>
-</div>
+  <nav class="nav">
+    <a href="dashboard.html">Dashboard</a>
+  </nav>
+
+  <div id="authSection" class="auth">
+    <button id="googleLogin">Login met Google</button>
+  </div>
+
+  <div id="userBar" style="display:none;">
+    <span id="userInfo"></span>
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+</header>
+
+<hr>
 
 <div id="appSection" style="display:none;">
 
-  <p id="userInfo"></p>
-  <button id="logoutBtn">Logout</button>
 
   <div class="layout">
 
