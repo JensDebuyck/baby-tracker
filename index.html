@@ -7,35 +7,71 @@
 </head>
 <body>
 <h1>BabyTracker</h1>
-<form id="activity-form">
-  <label for="dag">Dag:</label>
-  <input type="text" id="dag" required>
 
-  <label for="activiteit">Activiteit:</label>
-  <input type="text" id="activiteit" required>
 
-  <label for="start">Start:</label>
-  <input type="time" id="start" required>
+<div id="authSection">
+  <button id="googleLogin">Login met Google</button>
+</div>
 
-  <label for="eind">Einde:</label>
-  <input type="time" id="eind" required>
+<div id="appSection" style="display:none;">
 
-  <label for="categorie">Categorie:</label>
-  <select id="categorie">
-    <option value="slaap">Slaap</option>
-    <option value="voeding">Voeding</option>
-    <option value="andere">Andere</option>
-  </select>
+  <p id="userInfo"></p>
+  <button id="logoutBtn">Logout</button>
 
-  <button type="submit">Toevoegen</button>
+  <div class="layout">
 
-</form>
+    <!-- FORM -->
+    <form id="activity-form">
 
-<hr>
+      <label for="dag">Dag:</label>
+      <input type="text" id="dag" required>
 
-<h2>Overzicht</h2>
-<ul id="lijst"></ul>
+      <label for="activiteit">Activiteit:</label>
+      <select id="activiteit" required>
+        <option value="slaap">Slaap</option>
+        <option value="voeding">Voeding</option>
+        <option value="verversen">Verversen</option>
+        <option value="draagzak">Draagzak</option>
+        <option value="speelmat">Speelmat</option>
+        <option value="bad">Bad</option>
+        <option value="mama_tijd">Mama tijd</option>
+        <option value="andere">Andere</option>
+      </select>
 
-<script src="js/app.js"></script>
+      <label for="start">Start:</label>
+      <input type="time" id="start" required>
+
+      <label for="eind">Einde:</label>
+      <input type="time" id="eind" required>
+
+      <label for="categorie">Categorie:</label>
+      <input type="text" id="categorie" readonly>
+
+      <button type="submit">Toevoegen</button>
+
+    </form>
+
+    <!-- OVERVIEW -->
+    <div class="overview">
+      <h2>Overzicht</h2>
+      <table id="tabel">
+      <thead>
+      <tr>
+        <th>Dag</th>
+        <th>Activiteit</th>
+        <th>Start</th>
+        <th>Einde</th>
+        <th>Categorie</th>
+        <th>Duur</th>
+      </tr>
+      </thead>
+      <tbody></tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
