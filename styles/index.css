@@ -13,7 +13,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    max-width:500px;
+    max-width: 500px;
 }
 
 .overview {
@@ -29,7 +29,7 @@ body {
 }
 
 #activity-form input, #activity-form textarea,
-#activity-form select,#activity-form label,
+#activity-form select, #activity-form label,
 #activity-form button {
     padding: 10px;
 }
@@ -37,6 +37,7 @@ body {
 #tabel {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 15px;
 }
 
 #tabel th, #tabel td {
@@ -92,6 +93,70 @@ body {
     margin: 0 auto;
 }
 
+/* KALENDER */
+
+#calendar{
+    max-width: 500px;
+    margin: 0 auto;
+}
+.weekdays {
+    max-width: 500px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.calendar-day {
+    padding: 6px;
+    font-size:14px;
+    border: none;
+    background: #eee;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.calendar-day:hover {
+    background: #ddd;
+}
+
+.calendar-day.actief {
+    background: #007bff;
+    color: white;
+}
+
+.calendar-day.has-data {
+    border: 2px solid #28a745;
+}
+
+.calendar-nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom:10px;
+}
+
+.calendar-nav button{
+    background:none;
+    border: none;
+    font-size:20px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+#monthLabel {
+    margin:0;
+    font-size:18px;
+    font-weight: bold;
+}
 @media (max-width: 768px) {
     .layout {
         flex-direction: column;

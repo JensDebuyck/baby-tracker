@@ -31,6 +31,8 @@ function renderStats() {
     let other = 0;
 
     data.forEach(item => {
+        if (!item.eind) return; // sla lopende activiteit over
+
         const minutes = calcMinutes(item.start, item.eind);
 
         if (item.categorie === "slaap") sleep += minutes;
@@ -38,14 +40,9 @@ function renderStats() {
         else other += minutes;
     });
 
-    document.getElementById("sleepTotal").textContent =
-        `Slaap: ${format(sleep)}`;
-
-    document.getElementById("feedTotal").textContent =
-        `Voeding: ${format(feed)}`;
-
-    document.getElementById("otherTotal").textContent =
-        `Andere: ${format(other)}`;
+    document.getElementById("sleepTotal").textContent = `Slaap: ${format(sleep)}`;
+    document.getElementById("feedTotal").textContent = `Voeding: ${format(feed)}`;
+    document.getElementById("otherTotal").textContent = `Andere: ${format(other)}`;
 }
 
 // ---------------- TABLE ----------------
@@ -55,13 +52,15 @@ function renderTable() {
     tbody.innerHTML = "";
 
     data.forEach(item => {
+        const duur = item.eind ? format(calcMinutes(item.start, item.eind)) : "lopend";
+
         const row = document.createElement("tr");
 
         row.innerHTML = `
             <td>${item.dag}</td>
             <td>${item.categorie}</td>
             <td>${item.activiteit}</td>
-            <td>${format(calcMinutes(item.start, item.eind))}</td>
+            <td>${duur}</td>
         `;
 
         tbody.appendChild(row);
@@ -73,7 +72,6 @@ function renderTable() {
 function calcMinutes(start, end) {
     const s = new Date(`1970-01-01T${start}`);
     const e = new Date(`1970-01-01T${end}`);
-
     return Math.max(0, (e - s) / 60000);
 }
 
@@ -83,6 +81,8 @@ function format(min) {
     return `${h}u ${m}m`;
 }
 
+// ---------------- CHART ----------------
+
 function renderChart() {
     let slaap = 0;
     let voeding = 0;
@@ -90,20 +90,15 @@ function renderChart() {
     let andere = 0;
 
     data.forEach(item => {
+        if (!item.eind) return; // sla lopende activiteit over
+
         const minutes = calcMinutes(item.start, item.eind);
 
         switch (item.categorie) {
-            case "slaap":
-                slaap += minutes;
-                break;
-            case "voeding":
-                voeding += minutes;
-                break;
-            case "zorg":
-                zorg += minutes;
-                break;
-            default:
-                andere += minutes;
+            case "slaap": slaap += minutes; break;
+            case "voeding": voeding += minutes; break;
+            case "zorg": zorg += minutes; break;
+            default: andere += minutes;
         }
     });
 
@@ -120,9 +115,7 @@ function renderChart() {
         options: {
             responsive: true,
             plugins: {
-                legend: {
-                    position: "bottom"
-                }
+                legend: { position: "bottom" }
             }
         }
     });
